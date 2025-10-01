@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,55 +13,73 @@
     <link rel="shortcut icon" href="_imagens/intro.png">
 </head>
 
+
 <body>
 
-    <div id="passioneScreen">
-        <img id="startup-image" src="./_imagens/intro.png" alt="Tela de Abertura">
-        
+
+    <!-- Tela de encantamento para seleção de personagem especial -->
+    <div id="encantamento-screen" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; flex-direction:column;">
+        <h2 style="color:#fff; font-family:var(--fonte); margin-bottom:24px;">Você foi encantado!<br>Escolha um novo personagem:</h2>
+        <div style="display:flex; gap:40px; justify-content:center; align-items:center;">
+            <div class="divPersonagem" onclick="escolherPersonagemEspecial('burro_sherek')">
+                <img src="_media/burro_sherek.gif" alt="Burro Sherek" style="width:100px; border-radius:12px;">
+                <p style="color:#fff; text-align:center;">Burro Sherek</p>
+            </div>
+            <div class="divPersonagem" onclick="escolherPersonagemEspecial('gato_de_botas')">
+                <img src="_media/gato_de_botas.gif" alt="Gato de Botas" style="width:100px; border-radius:12px;">
+                <p style="color:#fff; text-align:center;">Gato de Botas</p>
+            </div>
+            <div class="divPersonagem" onclick="escolherPersonagemEspecial('shrek')">
+                <img src="_media/shrek.gif" alt="Shrek" style="width:100px; border-radius:12px;">
+                <p style="color:#fff; text-align:center;">Shrek</p>
+            </div>
+        </div>
     </div>
     <div class="game-board">
         <div class="tela-Inicial">
-            <img src="_imagens/logoSenai.png" alt="" width="350px">
+            <img src="_imagens/logoSenai.png" alt="" width="350px" style="display:block; margin:0 auto;">
             <h1>Super Jogo do Mario</h1>
             <label for="nickname">Digite seu Nick:</label>
             <input type="text" id="nickname" placeholder="Seu Nick Aqui" maxlength="15">
             <button id="start-button">Iniciar Jogo</button>
 
+
             <div id="escolha-Personagem">
-                <div id="marioDiv" class="divPersonagem" value="mario" onclick="escolhaPersonagem('mario')">
+                <div id="marioDiv" class="divPersonagem" value="mario">
                     <img src="_media/mario.gif" alt="" class="personagemEscolha">
                     <p>Mario</p>
                 </div>
-                <div id="sonicDiv" class="divPersonagem" value="sonic" onclick="escolhaPersonagem('sonic')">
+                <div id="sonicDiv" class="divPersonagem" value="sonic">
                     <img src="_media/sonic.gif" alt="" class="personagemEscolha">
                     <p>Sonic</p>
                 </div>
-                <div id="megamanDiv" class="divPersonagem" value="megaman" onclick="escolhaPersonagem('megaman')">
+                <div id="megamanDiv" class="divPersonagem" value="megaman">
                     <img src="_media/yd6sCid.gif" alt="" class="personagemEscolha">
                     <p>Megaman</p>
                 </div>
-                <div id="gokuDiv" class="divPersonagem" value="goku" onclick="escolhaPersonagem('goku')">
+                <div id="gokuDiv" class="divPersonagem" value="goku">
                     <img src="_media/goku.gif" alt="" class="personagemEscolha">
                     <p>Goku</p>
                 </div>
-                <div id="linkDiv" class="divPersonagem" value="link" onclick="escolhaPersonagem('link')">
+                <div id="linkDiv" class="divPersonagem" value="link">
                     <img src="_media/link.gif" alt="" class="personagemEscolha">
                     <p>Link</p>
                 </div>
-                <div id="jotaroDiv" class="divPersonagem" value="jotaro" onclick="escolhaPersonagem('jotaro')">
+                <div id="jotaroDiv" class="divPersonagem" value="jotaro">
                     <img src="_media/jotaroA.gif" alt="" class="personagemEscolha">
                     <p>Jotaro</p>
                 </div>
-                <div id="hollowDiv" class="divPersonagem" value="hollow" onclick="escolhaPersonagem('hollow')">
+                <div id="hollowDiv" class="divPersonagem" value="hollow">
                     <img src="_media/hollow.gif" alt="" class="personagemEscolha" style="transform: scaleX(-1);">
                     <p>Hollow</p>
                 </div>
-                <div id="hornetDiv" class="divPersonagem" value="hornet" onclick="escolhaPersonagem('hornet')">
+                <div id="hornetDiv" class="divPersonagem" value="hornet">
                     <img src="_media/hornet.gif" alt="" class="personagemEscolha" style="transform: scaleX(-1);">
                     <p>Hornet</p>
                 </div>
             </div>
         </div>
+
 
         <div class="tela-jogar-denovo">
             <h1>Voce deseja jogar outra vez?</h1>
@@ -72,18 +91,22 @@
             </div>
         </div>
 
+
         <div id="inferno-background"></div>
         <!-- <div class="onda-calor"></div> -->
-        <img src="./_imagens/pipe.png" class="pipe">
-        <img src="./_imagens/bullet.png" width="100px" class="bullet">
-        <img src="./_media/mario.gif" class="mario">
-        <img src="./_imagens/clouds.png" class="clouds">
+    <img src="./_imagens/pipe.png" class="pipe">
+    <img src="./_imagens/bullet.png" width="100px" class="bullet">
+    <img src="./_media/mario.gif" class="mario">
+    <img src="./_imagens/clouds.png" class="clouds">
+    <!-- <img src="./_imagens/logoSenai.png" alt="" width="350px"> -->
         <div id="star-layer"></div>
+
 
         <div class="score-container">
             <div class="score">Score: 0</div>
             <div id="lives-container"></div>
         </div>
+
 
         <div class="game-over-screen" style="display: none;">
             <h2>Game Over</h2>
@@ -92,10 +115,13 @@
         </div>
     </div>
 
+
     <div class="rank-button-container">
         <a href="./_php/rank.php" class="rank-button">Ver Rank</a>
     </div>
 </body>
 <script src="_javascript/script.js" defer></script>
 
+
 </html>
+
